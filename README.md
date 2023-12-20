@@ -6,4 +6,8 @@
 2. запустить файл Spravochnik-1.0-SNAPSHOT.jar через консоль командой java -jar Spravochnik-1.0-SNAPSHOT.jar из папке в которой хранится этот файл.
 
 ## Как работает программа
-![Image alt]()
+При запуске попросят ввести логин и пароль вашей базы данных с созданными данными по скрипту
+![Image alt](https://github.com/P0ZiT1V/SpravochnikLab/tree/master/screen/1.jpg)
+![Image alt](https://github.com/P0ZiT1V/SpravochnikLab/tree/master/screen/2.jpg)
+Затем открывается поле для выбора первой таблицы, которая будет открыты
+![Image alt](https://github.com/P0ZiT1V/SpravochnikLab/tree/master/screen/3.jpg)
