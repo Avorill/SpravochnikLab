@@ -21,7 +21,7 @@
 
 
 ![Image alt](https://github.com/P0ZiT1V/SpravochnikLab/tree/master/screen/cities.png)
-![Image alt](https://github.com/P0ZiT1V/SpravochnikLab/tree/master/screen/departments.png)
+![Image alt](https://github.com/P0ZiT1V/SpravochnikLab/tree/master/screen/department.png)
 ![Image alt](https://github.com/P0ZiT1V/SpravochnikLab/tree/master/screen/employees.png)
 
 
