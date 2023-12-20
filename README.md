@@ -8,20 +8,19 @@
 ## Как работает программа
 При запуске попросят ввести логин и пароль вашей базы данных с созданными данными по скрипту
 
-![Image alt](https://github.com/P0ZiT1V/SpravochnikLab/blob/master/screen/login.png)
-![Image alt](https://github.com/P0ZiT1V/SpravochnikLab/blob/master/screen/pass.png)
-
+![Image alt]((https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/login.png)
+![Image alt]((https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/pass.png)
 
 Затем открывается поле для выбора первой таблицы, которая будет открыты
-
 
 ![Image alt](https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/choose.png)
 
 После выбора мы переходим к нужной нам таблице, так выглядят таблицы после их открытия  :
 
 
-![Image alt](https://github.com/P0ZiT1V/SpravochnikLab/tree/master/screen/cities.png)
-![Image alt](https://github.com/P0ZiT1V/SpravochnikLab/tree/master/screen/department.png)
-![Image alt](https://github.com/P0ZiT1V/SpravochnikLab/tree/master/screen/employees.png)
+![Image alt]((https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/cities.png)
+![Image alt]((https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/departments.png)
+![Image alt]((https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/employees.png)
+
 
 
