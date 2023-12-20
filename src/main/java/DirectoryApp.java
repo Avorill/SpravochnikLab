@@ -437,7 +437,8 @@ public class DirectoryApp {
                             public Component getListCellRendererComponent(JList<?> list, Object value, int index,
                                                                           boolean isSelected, boolean cellHasFocus) {
                                 super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-                                if (value instanceof ComboBoxItem item) {
+                                if (value instanceof ComboBoxItem) {
+                                    ComboBoxItem item = (ComboBoxItem) value;
                                     setText(item.getDisplayValue());
                                 }
                                 return this;
@@ -521,33 +522,53 @@ public class DirectoryApp {
                         String type = String.valueOf(types.get(currentTable).toArray()[i]);
                         System.out.println(types.get(currentTable).toArray()[i]);
                         if (!columnsOfThisTable.get(i).equals(primaryKeys.get(currentTable))) {
-                            switch (type) {
-                                case "int4" ->
-                                        statement.setInt(i + 1 - c, Integer.parseInt(inputValues.get(i - c).toString()));
-                                case "int2", "bigserial" ->
-                                        statement.setInt(i + 1 - c, Short.parseShort(inputValues.get(i - c).toString()));
-                                case "float4" ->
-                                        statement.setFloat(i + 1 - c, Float.parseFloat(inputValues.get(i - c).toString()));
-                                case "float8" ->
-                                        statement.setDouble(i + 1 - c, Double.parseDouble(inputValues.get(i - c).toString()));
-                                case "numeric" ->
-                                        statement.setBigDecimal(i + 1 - c, new BigDecimal(inputValues.get(i - c).toString()));
-                                case "date" -> {
-                                    Date utilDate = datePicker.getDate();
+                            switch(type){
+                                case "int4":
+                                    statement.setInt(i + 1-c, Integer.valueOf(inputValues.get(i-c).toString()));
+                                    break;
+                                case "int2":
+                                    statement.setInt(i + 1-c, Short.valueOf(inputValues.get(i-c).toString()));
+                                    break;
+                                case "bigserial":
+                                    statement.setInt(i + 1-c, Short.valueOf(inputValues.get(i-c).toString()));
+                                    break;
+                                case "float4":
+                                    statement.setFloat(i + 1-c, Float.parseFloat(inputValues.get(i-c).toString()));
+                                    break;
+                                case "float8":
+                                    statement.setDouble(i + 1-c, Double.parseDouble(inputValues.get(i-c).toString()));
+                                    break;
+                                case "numeric":
+                                    statement.setBigDecimal(i + 1-c, new BigDecimal(inputValues.get(i-c).toString()));
+                                    break;
+                                case "date":
+
+                                    java.util.Date utilDate = datePicker.getDate();
+
                                     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                                     String formattedDate = dateFormat.format(utilDate);
+
                                     statement.setDate(i + 1 - c, java.sql.Date.valueOf(formattedDate));
-                                }
-                                case "varchar", "text", "bpchar", "bytea" ->
-                                        statement.setString(i + 1 - c, inputValues.get(i - c).toString());
-                                case "time" ->
-                                        statement.setTime(i + 1 - c, Time.valueOf(inputValues.get(i - c).toString()));
-                                case "timestamp" ->
-                                        statement.setTimestamp(i + 1 - c, Timestamp.valueOf(inputValues.get(i - c).toString()));
-                                case "bool" ->
-                                        statement.setBoolean(i + 1 - c, Boolean.parseBoolean(inputValues.get(i - c).toString()));
-                                default -> throw new IllegalArgumentException("Unsupported data type: " +
-                                        type);
+                                    break;
+                                case "varchar":
+                                case "text":
+                                case "bpchar":
+                                case "bytea":
+                                    statement.setString(i + 1-c, inputValues.get(i-c).toString());
+                                    break;
+                                case "time":
+                                    statement.setTime(i + 1-c, Time.valueOf(inputValues.get(i-c).toString()));
+                                    break;
+                                case "timestamp":
+                                    statement.setTimestamp(i + 1-c, Timestamp.valueOf(inputValues.get(i-c).toString()));
+                                    break;
+                                case "bool":
+                                    statement.setBoolean(i + 1-c, Boolean.parseBoolean(inputValues.get(i-c).toString()));
+                                    break;
+
+                                default:
+                                    throw new IllegalArgumentException("Unsupported data type: " +
+                                            type);
                             }
 //
                         }
@@ -705,7 +726,8 @@ public class DirectoryApp {
                                 public Component getListCellRendererComponent(JList<?> list, Object value, int index,
                                                                               boolean isSelected, boolean cellHasFocus) {
                                     super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-                                    if (value instanceof ComboBoxItem item) {
+                                    if (value instanceof ComboBoxItem) {
+                                        ComboBoxItem item = (ComboBoxItem) value;
                                         setText(item.getDisplayValue());
                                     }
                                     return this;
@@ -785,33 +807,47 @@ public class DirectoryApp {
                         for (int i = 0; i < columnsOfThisTable.size(); i++) {
                             String type = String.valueOf(types.get(currentTable).toArray()[i]);
                             if (!columnsOfThisTable.get(i).equals(primaryKeys.get(currentTable))) {
-                                switch (type) {
-                                    case "int4" ->
-                                            statement.setInt(i + 1 - c, Integer.parseInt(inputValues.get(i - c).toString()));
-                                    case "int2", "bigserial" ->
-                                            statement.setInt(i + 1 - c, Short.parseShort(inputValues.get(i - c).toString()));
-                                    case "float4" ->
-                                            statement.setFloat(i + 1 - c, Float.parseFloat(inputValues.get(i - c).toString()));
-                                    case "float8" ->
-                                            statement.setDouble(i + 1 - c, Double.parseDouble(inputValues.get(i - c).toString()));
-                                    case "numeric" ->
-                                            statement.setBigDecimal(i + 1 - c, new BigDecimal(inputValues.get(i - c).toString()));
-                                    case "date" -> {
-                                        Date utilDate = datePicker.getDate();
-                                        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                                        String formattedDate = dateFormat.format(utilDate);
-                                        statement.setDate(i + 1 - c, java.sql.Date.valueOf(formattedDate));
-                                    }
-                                    case "varchar", "text", "bpchar", "bytea" ->
-                                            statement.setString(i + 1 - c, inputValues.get(i - c).toString());
-                                    case "time" ->
-                                            statement.setTime(i + 1 - c, Time.valueOf(inputValues.get(i - c).toString()));
-                                    case "timestamp" ->
-                                            statement.setTimestamp(i + 1 - c, Timestamp.valueOf(inputValues.get(i - c).toString()));
-                                    case "bool" ->
-                                            statement.setBoolean(i + 1 - c, Boolean.parseBoolean(inputValues.get(i - c).toString()));
-                                    default -> throw new IllegalArgumentException("Unsupported data type: " +
-                                            type);
+                                switch(type){
+                                    case "int4":
+                                        statement.setInt(i + 1-c, Integer.valueOf(inputValues.get(i-c).toString()));
+                                        break;
+                                    case "int2":
+                                        statement.setInt(i + 1-c, Short.valueOf(inputValues.get(i-c).toString()));
+                                        break;
+                                    case "bigserial":
+                                        statement.setInt(i + 1-c, Short.valueOf(inputValues.get(i-c).toString()));
+                                        break;
+                                    case "float4":
+                                        statement.setFloat(i + 1-c, Float.parseFloat(inputValues.get(i-c).toString()));
+                                        break;
+                                    case "float8":
+                                        statement.setDouble(i + 1-c, Double.parseDouble(inputValues.get(i-c).toString()));
+                                        break;
+                                    case "numeric":
+                                        statement.setBigDecimal(i + 1-c, new BigDecimal(inputValues.get(i-c).toString()));
+                                        break;
+                                    case "date":
+                                        statement.setDate(i + 1-c, java.sql.Date.valueOf(inputValues.get(i-c).toString()));
+                                        break;
+                                    case "varchar":
+                                    case "text":
+                                    case "bpchar":
+                                    case "bytea":
+                                        statement.setString(i + 1-c, inputValues.get(i-c).toString());
+                                        break;
+                                    case "time":
+                                        statement.setTime(i + 1-c, Time.valueOf(inputValues.get(i-c).toString()));
+                                        break;
+                                    case "timestamp":
+                                        statement.setTimestamp(i + 1-c, Timestamp.valueOf(inputValues.get(i-c).toString()));
+                                        break;
+                                    case "bool":
+                                        statement.setBoolean(i + 1-c, Boolean.parseBoolean(inputValues.get(i-c).toString()));
+                                        break;
+
+                                    default:
+                                        throw new IllegalArgumentException("Unsupported data type: " +
+                                                type);
                                 }
 //
                             }
@@ -919,50 +955,67 @@ public class DirectoryApp {
             type = (types.get(foreignTable).get(index)
             );
         }
-        return switch (type) {
-            case "int2", "int4" -> Comparator.comparingInt(o -> {
-                if (o instanceof String) {
-                    return Integer.parseInt((String) o);
-                } else if (o instanceof Integer) {
-                    return (int) o;
-                } else {
-                    throw new IllegalArgumentException("Unsupported type for comparison: " + o.getClass());
-                }
-            });
-            case "bigserial", "int8" -> Comparator.comparingLong(o -> {
-                if (o instanceof String) {
-                    return Long.parseLong((String) o);
-                } else if (o instanceof Long) {
-                    return (long) o;
-                } else {
-                    throw new IllegalArgumentException("Unsupported type for comparison: " + o.getClass());
-                }
-            });
-            case "varchar", "bpchar", "text", "bytea" -> Comparator.comparing(Object::toString);
-            case "numeric" -> Comparator.comparing(DirectoryApp::parseBigDecimal);
-            case "date" -> Comparator.comparing(DirectoryApp::parseDate);
-            case "float4", "float8" -> Comparator.comparingDouble(o -> {
-                if (o instanceof String) {
-                    return Double.parseDouble((String) o);
-                } else if (o instanceof Double) {
-                    return (double) o;
-                } else {
-                    throw new IllegalArgumentException("Unsupported type for comparison: " + o.getClass());
-                }
-            });
-            case "time" -> Comparator.comparing(DirectoryApp::parseTime);
-            case "timestamp" -> Comparator.comparing(DirectoryApp::parseTimestamp);
-            case "bool" -> Comparator.comparingInt(o -> {
-                if (o instanceof String) {
-                    return Boolean.parseBoolean((String) o) ? 1 : 0;
-                } else if (o instanceof Boolean) {
-                    return (Boolean) o ? 1 : 0;
-                } else {
-                    throw new IllegalArgumentException("Unsupported type for comparison: " + o.getClass());
-                }
-            });
-            default -> throw new IllegalArgumentException("Unsupported data type: " + type);
-        };
+        switch (type) {
+            case "int2":
+            case "int4":
+                return Comparator.comparingInt(o -> {
+                    if (o instanceof String) {
+                        return Integer.parseInt((String) o);
+                    } else if (o instanceof Integer) {
+                        return (int) o;
+                    } else {
+                        throw new IllegalArgumentException("Unsupported type for comparison: " + o.getClass());
+                    }
+                });
+            case "bigserial":
+            case "int8":
+                return Comparator.comparingLong(o -> {
+                    if (o instanceof String) {
+                        return Long.parseLong((String) o);
+                    } else if (o instanceof Long) {
+                        return (long) o;
+                    } else {
+                        throw new IllegalArgumentException("Unsupported type for comparison: " + o.getClass());
+                    }
+                });
+            case "varchar":
+            case "bpchar":
+            case "text":
+            case "bytea":
+                return Comparator.comparing(Object::toString);
+            case "numeric":
+                return Comparator.comparing(DirectoryApp::parseBigDecimal);
+            case "date":
+                return Comparator.comparing(DirectoryApp::parseDate);
+            case "float4":
+            case "float8":
+                return Comparator.comparingDouble(o -> {
+                    if (o instanceof String) {
+                        return Double.parseDouble((String) o);
+                    } else if (o instanceof Double) {
+                        return (double) o;
+                    } else {
+                        throw new IllegalArgumentException("Unsupported type for comparison: " + o.getClass());
+                    }
+                });
+
+            case "time":
+                return Comparator.comparing(DirectoryApp::parseTime);
+            case "timestamp":
+                return Comparator.comparing(DirectoryApp::parseTimestamp);
+            case "bool":
+                return Comparator.comparingInt(o -> {
+                    if (o instanceof String) {
+                        return Boolean.parseBoolean((String) o) ? 1 : 0;
+                    } else if (o instanceof Boolean) {
+                        return (Boolean) o ? 1 : 0;
+                    } else {
+                        throw new IllegalArgumentException("Unsupported type for comparison: " + o.getClass());
+                    }
+                });
+            default:
+                throw new IllegalArgumentException("Unsupported data type: " + type);
+        }
     }
 
     private static BigDecimal parseBigDecimal(Object o) {
