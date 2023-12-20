@@ -7,7 +7,7 @@
 
 ## Как работает программа
 При запуске попросят ввести логин и пароль вашей базы данных с созданными данными по скрипту
-![Image alt][(https://github.com/P0ZiT1V/SpravochnikLab/tree/master/screen/1.jpg](https://github.com/P0ZiT1V/SpravochnikLab/blob/master/screen/emloyees.jpg))
+![Image alt](https://github.com/P0ZiT1V/SpravochnikLab/blob/master/screen/add.png)
 
 ![Image alt](https://github.com/P0ZiT1V/SpravochnikLab/tree/master/screen/2.jpg)
 Затем открывается поле для выбора первой таблицы, которая будет открыты
