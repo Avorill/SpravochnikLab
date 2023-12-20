@@ -15,7 +15,7 @@
 Затем открывается поле для выбора первой таблицы, которая будет открыты
 
 
-![Image alt](https://github.com/P0ZiT1V/SpravochnikLab/tree/master/screen/choose.png)
+![Image alt](https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/choose.png)
 
 После выбора мы переходим к нужной нам таблице, так выглядят таблицы после их открытия  :
 
