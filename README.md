@@ -17,9 +17,24 @@
 
 После выбора мы переходим к нужной нам таблице, так выглядят таблицы после их открытия  :
 ![Image alt](https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/cities.png)
-![Image alt](https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/departments.png)
-
+![Image alt](https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/department.png)
 ![Image alt](https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/employees.png)
+
+Пройдемся по заданиям:
+###  Выбирать справочник из списка
+
+Есть кнопка октрыть таблицу после нажатия на которую выскакивает окно в котором находится выпадающий список для выбора таблицы
+![Image alt](https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/chooseAnotherTable.png)
+###   Отображать выбранный справочник в виде таблички. Обеспечить сортировку по колонкам
+Для сотировки надо нажать на заголовок таблицы. Вот как это выглядит
+![Image alt](https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/sort1.png)
+![Image alt](https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/sort2.png)
+![Image alt](https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/sort3.png)
+![Image alt](https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/sort4.png)
+
+###   Добавлять значения справочника
+###   Удалять значения справочника
+###   Редактировать значения справочника
 
 
 
