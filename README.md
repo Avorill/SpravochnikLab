@@ -49,10 +49,18 @@
 ![Image alt](https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/afterDelete.png)
 
 
+
 ###   Редактировать значения справочника
 Для редактирования надо выделить строку, нажать на кнопку изменить (изменение посредством ввода чего-то нового в поле не работает)
 Кнопка " отменить выделение" существует на случай, если выделил то, что не хотел.
 ![Image alt](https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/update.png)
+
+### Работает для любого справочника
+![Image alt](https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/createTestTable.png)
+![Image alt](https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/testNeewTable.png)
+![Image alt](https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/newTableDate.png)
+![Image alt](https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/newTableAdd.png)
+![Image alt](https://raw.githubusercontent.com/P0ZiT1V/SpravochnikLab/master/screen/newTableSort.png)
 
 
 
