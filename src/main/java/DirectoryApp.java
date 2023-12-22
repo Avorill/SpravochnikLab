@@ -11,8 +11,6 @@ import org.jdesktop.swingx.JXDatePicker;
 
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.math.BigDecimal;
@@ -168,7 +166,10 @@ public class DirectoryApp {
         }
     }
 
-    private void loadDirectory(String currentTable, HashMap<String, List<String>> columns, HashMap<String, List<String>> types,HashMap<String, String> primaryKeys, DefaultTableModel tableModel, HashMap<String,List<String>> connectionTable ) {
+    private void loadDirectory(String currentTable, HashMap<String,
+            List<String>> columns, HashMap<String, List<String>> types,
+                               HashMap<String, String> primaryKeys, DefaultTableModel tableModel,
+                               HashMap<String,List<String>> connectionTable ) {
         try {
             List<String> primList = new ArrayList<>();
             List<String> columnNames = new ArrayList<>();
@@ -261,9 +262,11 @@ public class DirectoryApp {
                     }
                 }
                 sqlQuery.append(" from ").append(currentTable);
-                sqlQuery.append(" join ");
+                sqlQuery.append(" left join ");
                 for(String prim :primList){
-                    sqlQuery.append(connectionTable.get(prim).get(0)).append(" ON ").append(currentTable).append(".").append(prim).append(" = ").append(connectionTable.get(prim).get(0)).append(".").append(prim);
+                    sqlQuery.append(connectionTable.get(prim).get(0)).append(" ON ").append(currentTable)
+                            .append(".").append(prim).append(" = ").append(connectionTable.get(prim)
+                                    .get(0)).append(".").append(prim);
                 }
                 PreparedStatement statement = connection.prepareStatement(String.valueOf(sqlQuery));
                 ResultSet result = statement.executeQuery();
@@ -483,9 +486,10 @@ public class DirectoryApp {
                             inputValues.add(dateFormat.format(utilDate));
                             p++;
                         }
+
                         else if (primList.contains(columnsOfThisTable.get(i))){
-                            String value = comboBoxData.get(combo).getId();
-                            inputValues.add(value);
+                            ComboBoxItem  value = (ComboBoxItem) comboBoxes.get(combo).getSelectedItem();
+                            inputValues.add(value.getId());
                             combo++;
                         }
                         else {
@@ -595,7 +599,8 @@ public class DirectoryApp {
                                 rowData.add(inputValues.get(i-c));
                             }
                             else {
-                                rowData.add(comboBoxData.get(combo).getDisplayValue());
+                                ComboBoxItem value = (ComboBoxItem) comboBoxes.get(combo).getSelectedItem();
+                                rowData.add(value.getDisplayValue());
                                 combo++;
                             }
 
@@ -774,8 +779,8 @@ public class DirectoryApp {
                                 p++;
                             }
                             else if (primList.contains(columnsOfThisTable.get(i))){
-                                String value = comboBoxData.get(combo).getId();
-                                inputValues.add(value);
+                                ComboBoxItem  value = (ComboBoxItem) comboBoxes.get(combo).getSelectedItem();
+                                inputValues.add(value.getId());
                                 combo++;
                             }
                             else {
@@ -827,7 +832,12 @@ public class DirectoryApp {
                                         statement.setBigDecimal(i + 1-c, new BigDecimal(inputValues.get(i-c).toString()));
                                         break;
                                     case "date":
-                                        statement.setDate(i + 1-c, java.sql.Date.valueOf(inputValues.get(i-c).toString()));
+                                        java.util.Date utilDate = datePicker.getDate();
+
+                                        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                                        String formattedDate = dateFormat.format(utilDate);
+
+                                        statement.setDate(i + 1 - c, java.sql.Date.valueOf(formattedDate));
                                         break;
                                     case "varchar":
                                     case "text":
@@ -882,7 +892,8 @@ public class DirectoryApp {
                                 rowData.add(inputValues.get(i-c));
                             }
                             else {
-                                rowData.add(comboBoxData.get(combo).getDisplayValue());
+                                ComboBoxItem value = (ComboBoxItem) comboBoxes.get(combo).getSelectedItem();
+                                rowData.add(value.getDisplayValue());
                                 combo++;
                             }
 
