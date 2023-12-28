@@ -52,7 +52,7 @@ public class DirectoryApp {
         });
 
         JButton deleteButton = new JButton("Удалить");
-        deleteButton.addActionListener(e -> deleteDirectory(currentTable.toString(), tableModel, columns, primaryKeys));
+        deleteButton.addActionListener(e -> deleteDirectory(currentTable.toString(), tableModel, columns, primaryKeys,tables));
 
         JButton selectButton = new JButton("Отменить выделение");
         selectButton.addActionListener(e -> table.clearSelection());
@@ -919,15 +919,29 @@ public class DirectoryApp {
         }
     }
     private void deleteDirectory(String currentTable,DefaultTableModel tableModel,  HashMap<String,List<String>> columns,
-                                 HashMap<String,String> primaryKeys) {
-        // List<String> currentColumns = columns.get(currentTable);
+                                 HashMap<String,String> primaryKeys,  List<String> tables) {
         int selectedRow = table.getSelectedRow();
         if (selectedRow != -1) {
             int modelRow = table.convertRowIndexToModel(selectedRow);
+           // HashMap<String, String> modifiedTable = new HashMap<>();
             int index = columns.get(currentTable).indexOf(primaryKeys.get(currentTable));
             int id = Integer.parseInt(String.valueOf(tableModel.getValueAt(modelRow, index)));
             String prime = primaryKeys.get(currentTable);
             try {
+                for(String table : tables){
+                    if(!table.equals(currentTable)){
+                        if(columns.get(table).contains(primaryKeys.get(currentTable))){
+                            //modifiedTable.put(table, primaryKeys.get(currentTable));
+                            String sqlUpdate = String.format("UPDATE %s SET %s = NULL WHERE %s = ?", table,
+                                    primaryKeys.get(currentTable), primaryKeys.get(currentTable));
+                            PreparedStatement updateStatement = connection.prepareStatement(sqlUpdate);
+                            updateStatement.setInt(1, id);
+                            updateStatement.executeUpdate();
+                            updateStatement.close();
+                        }
+
+                    }
+                }
                 String sqlQuary = String.format("DELETE FROM " + currentTable + " WHERE " + prime + " = ?");
                 PreparedStatement statement = connection.prepareStatement(sqlQuary);
                 statement.setInt(1,id);
